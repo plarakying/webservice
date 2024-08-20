@@ -1,0 +1,132 @@
+// การ Query
+    // การดึงในตาราง Province ทั้งหมด และเก็บค่าใส่ตัวแปร model
+    //$model = \App\Models\Province::all();
+    //dd($model[0]->student[0]->name);
+    // ดึงข้อมูลในตาราง Country ทั้งหมด
+    /*$c = Country::all();
+    dd($c[0]->region);*/
+
+    /*$c = Country::all();
+    dd($c[0]->Region[0]->Province[0]->Teacher[0]);*/
+
+    /*$t = Teacher::find[1];
+    dd($t[0]->Province[0]);*/
+    
+
+
+
+    // 20/8/2567
+    // การ Query โดยใช้ ORM
+
+    /*$model = Student::query()
+    ->where('province_id','1')
+    ->where('firstname','LIKE','a%')
+    ->where('lastname','LIKE','a%')
+    ->get();
+    
+    dd($model);*/
+
+    
+    /*$model = Student::query()
+    ->where('province_id','1')
+    ->orwhere('province_id','3')
+    ->get();
+    
+    dd($model);*/
+
+
+    /*$model = Student::query()
+    ->whereIn('id',['1','5','10']) //wherreIn แสดงเฉพาะในวงเล็บ รูปแบบ อาเรย์
+    ->get();
+    
+    dd($model);*/
+
+
+    /*$model = Student::query()
+    ->whereNotIn('id',['10','20','30']) //wherreNotIn แสดงทั้งหมดยกเว้นในวงเล็บ
+    ->take(10)
+    ->get();
+    
+    dd($model);*/
+
+
+    /*$model = Student::query()
+    ->where('id','>=','20') //wherreNotIn แสดงทั้งหมดยกเว้นในวงเล็บ 
+    ->where('id','<=','50')
+    ->get();
+    
+    dd($model);*/
+
+
+    /*$model = Student::query()
+    ->whereBetween('id',[20,50]) //แสดงเฉพาะเจาะจงมากขึ้น
+    ->get();
+    
+    dd($model);*/
+
+
+    /*$model = Student::query()
+    ->whereNotBetween('id',[20,50]) //ไม่แสดงเฉพาะเจาะจงมากขึ้น
+    ->take(20)
+    ->orderBy('id','desc')
+                    //  น้อยไปมาก asc มากไปน้อย desc
+    ->get();    //ดึงมาในรูปแบบของ อาเรย์
+    
+    dd($model);*/
+
+
+    /*$model = Student::query()
+    ->whereNotBetween('id',[20,50]) //ไม่แสดงเฉพาะเจาะจงมากขึ้น
+    ->take(20)
+    ->orderBy('id','desc')
+                    //  น้อยไปมาก asc มากไปน้อย desc
+    ->first(); // ดึงเฉพาะตัวแรกสุด ไม่ใช่รูปแบบ อาเรย์
+    
+    dd($model);*/
+
+
+    /*$model = Student::query()
+    ->whereNotBetween('id',[20,50]) //ไม่แสดงเฉพาะเจาะจงมากขึ้น
+    ->take(20)
+    ->orderBy('id','desc')
+                    //  น้อยไปมาก asc มากไปน้อย desc
+    ->count(); // นับจำนวนข้อมูล
+    
+    dd($model);*/
+
+
+   /* $min = 10;
+    $max = 30;
+    $sort = 'desc';
+
+    $model = Student::query()
+    ->whereNotBetween('id',[$min,$max]) //ไม่แสดงเฉพาะเจาะจงมากขึ้น
+    ->orderBy('id',$sort)
+                    //  น้อยไปมาก asc มากไปน้อย desc
+    ->get(); 
+    
+    dd($model);*/
+
+
+    // งานแรก
+    /*$model = Student::query()
+    ->where('province_id','4')
+    ->where('firstname','LIKE','G%')
+    ->where('lastname','LIKE','N%')
+    ->where('email','LIKE','A%')
+    ->whereBetween('id',[30,70])
+    ->orderBy('firstname', 'desc')
+    ->get();
+    
+    dd($model);*/
+
+
+    // การค้นหา ใน Relation ของ Province (1:M)
+    /*$model = Province::query()
+    ->with('Teacher')
+    ->whereHas('Teacher' ,function($query){
+        $query->where('id','100');
+    })
+    ->get();
+
+    dd($model);*/
